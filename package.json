@@ -10,14 +10,40 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:file-creator.helloWorld"
+		"onCommand:file-creator.vue",
+		"onCommand:file-creator.react"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "file-creator.helloWorld",
-				"title": "Hello World"
+				"command": "file-creator.vue",
+				"title": "Vue"
+			},
+			{
+				"command": "file-creator.react",
+				"title": "React"
+			}
+		],
+		"menus": {
+			"file-creator": [
+				{
+					"command": "file-creator.vue"
+				},
+				{
+					"command": "file-creator.react"
+				}
+			],
+			"explorer/context": [
+				{
+					"submenu": "file-creator"
+				}
+			]
+		},
+		"submenus": [
+			{
+				"id": "file-creator",
+				"label": "Create New File"
 			}
 		]
 	},
