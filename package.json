@@ -10,6 +10,7 @@
 		"Other"
 	],
 	"activationEvents": [
+		"onCommand:file-creator.custom",
 		"onCommand:file-creator.vue.component",
 		"onCommand:file-creator.vue.store",
 		"onCommand:file-creator.vue.router",
@@ -18,6 +19,11 @@
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
+			{
+				"command": "file-creator.custom",
+				"title": "Custom"
+			},
+
 			{
 				"command": "file-creator.vue.component",
 				"title": "Component"
@@ -39,6 +45,9 @@
 			"file-creator": [
 				{
 					"submenu": "file-creator-vue"
+				},
+				{
+					"command": "file-creator.custom"
 				}
 			],
 
