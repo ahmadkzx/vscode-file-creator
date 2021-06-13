@@ -1,7 +1,0 @@
-import react from 'react'
-
-class %filename extends react.Component {
-  
-}
-
-export default %filename

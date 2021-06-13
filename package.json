@@ -10,30 +10,53 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:file-creator.vue",
-		"onCommand:file-creator.react"
+		"onCommand:file-creator.vue.component",
+		"onCommand:file-creator.vue.store",
+		"onCommand:file-creator.vue.router",
+		"onCommand:file-creator.vue.plugin"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "file-creator.vue",
-				"title": "Vue"
+				"command": "file-creator.vue.component",
+				"title": "Component"
 			},
 			{
-				"command": "file-creator.react",
-				"title": "React"
+				"command": "file-creator.vue.store",
+				"title": "Store"
+			},
+			{
+				"command": "file-creator.vue.router",
+				"title": "Router"
+			},
+			{
+				"command": "file-creator.vue.plugin",
+				"title": "Plugin"
 			}
 		],
 		"menus": {
 			"file-creator": [
 				{
-					"command": "file-creator.vue"
-				},
-				{
-					"command": "file-creator.react"
+					"submenu": "file-creator-vue"
 				}
 			],
+
+			"file-creator-vue": [
+				{
+					"command": "file-creator.vue.component"
+				},
+				{
+					"command": "file-creator.vue.store"
+				},
+				{
+					"command": "file-creator.vue.router"
+				},
+				{
+					"command": "file-creator.vue.plugin"
+				}
+			],
+
 			"explorer/context": [
 				{
 					"submenu": "file-creator"
@@ -44,6 +67,10 @@
 			{
 				"id": "file-creator",
 				"label": "Create New File"
+			},
+			{
+				"id": "file-creator-vue",
+				"label": "Vue"
 			}
 		]
 	},
