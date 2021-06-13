@@ -59,7 +59,8 @@
 
 			"explorer/context": [
 				{
-					"submenu": "file-creator"
+					"submenu": "file-creator",
+					"when": "explorerResourceIsFolder"
 				}
 			]
 		},
