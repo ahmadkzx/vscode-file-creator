@@ -14,37 +14,51 @@
 		"onCommand:file-creator.vue.component",
 		"onCommand:file-creator.vue.store",
 		"onCommand:file-creator.vue.router",
-		"onCommand:file-creator.vue.plugin"
+		"onCommand:file-creator.vue.plugin",
+		"onCommand:file-creator.react.class-component",
+		"onCommand:file-creator.react.function-component"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "file-creator.custom",
-				"title": "Custom"
+				"title": "Component",
+				"command": "file-creator.vue.component"
+			},
+			{
+				"title": "Store",
+				"command": "file-creator.vue.store"
+			},
+			{
+				"title": "Router",
+				"command": "file-creator.vue.router"
+			},
+			{
+				"title": "Plugin",
+				"command": "file-creator.vue.plugin"
 			},
 
 			{
-				"command": "file-creator.vue.component",
-				"title": "Component"
+				"title": "Class Component",
+				"command": "file-creator.react.class-component"
 			},
 			{
-				"command": "file-creator.vue.store",
-				"title": "Store"
+				"title": "Function Component",
+				"command": "file-creator.react.function-component"
 			},
+
 			{
-				"command": "file-creator.vue.router",
-				"title": "Router"
-			},
-			{
-				"command": "file-creator.vue.plugin",
-				"title": "Plugin"
+				"title": "Custom",
+				"command": "file-creator.custom"
 			}
 		],
 		"menus": {
 			"file-creator": [
 				{
 					"submenu": "file-creator-vue"
+				},
+				{
+					"submenu": "file-creator-react"
 				},
 				{
 					"command": "file-creator.custom"
@@ -66,6 +80,15 @@
 				}
 			],
 
+			"file-creator-react": [
+				{
+					"command": "file-creator.react.class-component"
+				},
+				{
+					"command": "file-creator.react.function-component"
+				}
+			],
+
 			"explorer/context": [
 				{
 					"submenu": "file-creator",
@@ -75,12 +98,16 @@
 		},
 		"submenus": [
 			{
-				"id": "file-creator",
-				"label": "Create New File"
+				"label": "Create New File",
+				"id": "file-creator"
 			},
 			{
-				"id": "file-creator-vue",
-				"label": "Vue"
+				"label": "Vue",
+				"id": "file-creator-vue"
+			},
+			{
+				"label": "React",
+				"id": "file-creator-react"
 			}
 		]
 	},

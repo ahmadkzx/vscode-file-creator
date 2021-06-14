@@ -1,0 +1,8 @@
+class %filename extends react.Component {
+
+	render() {
+
+	}
+}
+
+export default %filename
