@@ -2,7 +2,7 @@ const vscode = require('vscode')
 const create = require('../helpers/createFile')
 const getTemplate = require('../helpers/getTemplate')
 
-const registerVueCommands = (context) => {
+const registerReactCommands = (context) => {
 	const classComponentCommand = vscode.commands.registerCommand('file-creator.react.class-component', (uri) => {
 		const template = getTemplate(/*name*/ 'react-class-component')
 		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
@@ -17,4 +17,4 @@ const registerVueCommands = (context) => {
 	context.subscriptions.push(functionComponentCommand)
 }
 
-module.exports = registerVueCommands
+module.exports = registerReactCommands
