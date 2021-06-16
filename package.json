@@ -16,7 +16,10 @@
 		"onCommand:file-creator.vue.router",
 		"onCommand:file-creator.vue.plugin",
 		"onCommand:file-creator.react.class-component",
-		"onCommand:file-creator.react.function-component"
+		"onCommand:file-creator.react.function-component",
+		"onCommand:file-creator.js.array-module",
+		"onCommand:file-creator.js.object-module",
+		"onCommand:file-creator.js.function-module"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -48,6 +51,19 @@
 			},
 
 			{
+				"title": "Array Module",
+				"command": "file-creator.js.array-module"
+			},
+			{
+				"title": "Object Module",
+				"command": "file-creator.js.object-module"
+			},
+			{
+				"title": "Function Module",
+				"command": "file-creator.js.function-module"
+			},
+
+			{
 				"title": "Custom",
 				"command": "file-creator.custom"
 			}
@@ -62,6 +78,9 @@
 				},
 				{
 					"command": "file-creator.custom"
+				},
+				{
+					"submenu": "file-creator-js"
 				}
 			],
 
@@ -89,6 +108,18 @@
 				}
 			],
 
+			"file-creator-js": [
+				{
+					"command": "file-creator.js.array-module"
+				},
+				{
+					"command": "file-creator.js.object-module"
+				},
+				{
+					"command": "file-creator.js.function-module"
+				}
+			],
+
 			"explorer/context": [
 				{
 					"submenu": "file-creator",
@@ -108,6 +139,10 @@
 			{
 				"label": "React",
 				"id": "file-creator-react"
+			},
+			{
+				"label": "Js",
+				"id": "file-creator-js"
 			}
 		]
 	},
