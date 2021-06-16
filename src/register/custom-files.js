@@ -9,6 +9,8 @@ const registerCustomFiles = (context) => {
 	const ourTemplateFiles = fs.readdirSync(ourTemplatesPath)
 
 	const userTemplatePath = path.join(vscode.workspace.workspaceFolders[0].uri.fsPath, '/.templates')
+	if (!fs.existsSync(userTemplatePath)) return
+
 	let userTemplateFiles = fs.readdirSync(userTemplatePath)
 	userTemplateFiles = userTemplateFiles.map(file => file.replace('.template', ''))
 
