@@ -1,11 +1,16 @@
 {
 	"name": "file-creator",
 	"displayName": "File Creator",
+	"publisher": "AhmadKarmizade",
 	"description": "",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahmadkzx/vscode-file-creator.git.git"
+  },
 	"categories": [
 		"Other"
 	],
