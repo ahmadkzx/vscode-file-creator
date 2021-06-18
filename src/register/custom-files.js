@@ -6,11 +6,11 @@ const getTemplate = require('../helpers/getTemplate')
 
 const registerCustomFiles = (context) => {
 	const ourTemplatesPath = path.join(__dirname, '../templates')
-	const ourTemplateFiles = fs.readdirSync(ourTemplatesPath)
+	let ourTemplateFiles = fs.readdirSync(ourTemplatesPath)
+	ourTemplateFiles = ourTemplateFiles.map(file => file.replace('.template', ''))
 
 	const userTemplatePath = path.join(vscode.workspace.workspaceFolders[0].uri.fsPath, '/.templates')
 	if (!fs.existsSync(userTemplatePath)) return
-
 	let userTemplateFiles = fs.readdirSync(userTemplatePath)
 	userTemplateFiles = userTemplateFiles.map(file => file.replace('.template', ''))
 
@@ -20,8 +20,8 @@ const registerCustomFiles = (context) => {
 		
 		const selectedCustomFile = await vscode.window.showQuickPick(diff, { title: 'Custom Templates' })
 		const template = getTemplate(/*name*/ selectedCustomFile)
-		console.log(template)
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
+		const fileFormat = selectedCustomFile.split('-')[0]
+		create(/*target path*/ uri.fsPath, /*format*/ fileFormat, /*content*/ template)
 	})
 	context.subscriptions.push(customFilesCommand)
 }
