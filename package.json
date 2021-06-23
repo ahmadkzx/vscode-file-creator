@@ -25,8 +25,8 @@
 		"onCommand:file-creator.js.array-module",
 		"onCommand:file-creator.js.object-module",
 		"onCommand:file-creator.js.function-module",
-		"onCommand:file-creator.js.graphql.query",
-		"onCommand:file-creator.js.graphql.mutation"
+		"onCommand:file-creator.graphql.query",
+		"onCommand:file-creator.graphql.mutation"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -72,11 +72,11 @@
 
 			{
 				"title": "Query",
-				"command": "file-creator.js.graphql.query"
+				"command": "file-creator.graphql.query"
 			},
 			{
 				"title": "Mutation",
-				"command": "file-creator.js.graphql.mutation"
+				"command": "file-creator.graphql.mutation"
 			},
 
 			{
@@ -141,10 +141,10 @@
 
 			"file-creator-graphql": [
 				{
-					"command": "file-creator.js.graphql.query"
+					"command": "file-creator.graphql.query"
 				},
 				{
-					"command": "file-creator.js.graphql.mutation"
+					"command": "file-creator.graphql.mutation"
 				}
 			],
 
