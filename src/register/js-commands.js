@@ -1,26 +1,28 @@
-const vscode = require('vscode')
-const create = require('../helpers/createFile')
-const getTemplate = require('../helpers/getTemplate')
+const commandsRegistrar = require('../helpers/commandsRegistrar')
+
 
 const registerJsCommands = (context) => {
-	const jsArrayModuleCommand = vscode.commands.registerCommand('file-creator.js.array-module', (uri) => {
-		const template = getTemplate(/*name*/ 'js-array-module')
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
-	})
+	const commands = [
+		{
+			format: 'js',
+			templateName: 'js-array-module',
+			command: 'file-creator.js.array-module'
+		},
+		{
+			format: 'js',
+			templateName: 'js-object-module',
+			command: 'file-creator.js.object-module'
+		},
+		{
+			format: 'js',
+			templateName: 'js-function-module',
+			command: 'file-creator.js.function-module'
+		}
+	]
 
-	const jsObjectModuleCommand = vscode.commands.registerCommand('file-creator.js.object-module', (uri) => {
-		const template = getTemplate(/*name*/ 'js-object-module')
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
-	})
+	const commandsHandler = commandsRegistrar(commands)
 
-	const jsFunctionModuleCommand = vscode.commands.registerCommand('file-creator.js.function-module', (uri) => {
-		const template = getTemplate(/*name*/ 'js-function-module')
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
-	})
-
-	context.subscriptions.push(jsArrayModuleCommand)
-	context.subscriptions.push(jsObjectModuleCommand)
-	context.subscriptions.push(jsFunctionModuleCommand)
+	context.subscriptions.push(...commandsHandler)
 }
 
 module.exports = registerJsCommands

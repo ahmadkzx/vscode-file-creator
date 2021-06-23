@@ -1,20 +1,22 @@
-const vscode = require('vscode')
-const create = require('../helpers/createFile')
-const getTemplate = require('../helpers/getTemplate')
+const commandsRegistrar = require('../helpers/commandsRegistrar')
 
 const registerReactCommands = (context) => {
-	const classComponentCommand = vscode.commands.registerCommand('file-creator.react.class-component', (uri) => {
-		const template = getTemplate(/*name*/ 'react-class-component')
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
-	})
+	const commands = [
+		{
+			format: 'js',
+			templateName: 'react-class-component',
+			command: 'file-creator.react.class-component'
+		},
+		{
+			format: 'js',
+			templateName: 'react-function-component',
+			command: 'file-creator.react.function-component'
+		}
+	]
 
-	const functionComponentCommand = vscode.commands.registerCommand('file-creator.react.function-component', (uri) => {
-		const template = getTemplate(/*name*/ 'react-function-component')
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
-	})
+	const commandsHandler = commandsRegistrar(commands)
 
-	context.subscriptions.push(classComponentCommand)
-	context.subscriptions.push(functionComponentCommand)
+	context.subscriptions.push(...commandsHandler)
 }
 
 module.exports = registerReactCommands
