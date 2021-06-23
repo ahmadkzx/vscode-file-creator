@@ -24,7 +24,9 @@
 		"onCommand:file-creator.react.function-component",
 		"onCommand:file-creator.js.array-module",
 		"onCommand:file-creator.js.object-module",
-		"onCommand:file-creator.js.function-module"
+		"onCommand:file-creator.js.function-module",
+		"onCommand:file-creator.js.graphql.query",
+		"onCommand:file-creator.js.graphql.mutation"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
@@ -69,6 +71,15 @@
 			},
 
 			{
+				"title": "Query",
+				"command": "file-creator.js.graphql.query"
+			},
+			{
+				"title": "Mutation",
+				"command": "file-creator.js.graphql.mutation"
+			},
+
+			{
 				"title": "Custom",
 				"command": "file-creator.custom"
 			}
@@ -80,6 +91,9 @@
 				},
 				{
 					"submenu": "file-creator-react"
+				},
+				{
+					"submenu": "file-creator-graphql"
 				},
 				{
 					"command": "file-creator.custom"
@@ -125,6 +139,15 @@
 				}
 			],
 
+			"file-creator-graphql": [
+				{
+					"command": "file-creator.js.graphql.query"
+				},
+				{
+					"command": "file-creator.js.graphql.mutation"
+				}
+			],
+
 			"explorer/context": [
 				{
 					"submenu": "file-creator",
@@ -148,6 +171,10 @@
 			{
 				"label": "Js",
 				"id": "file-creator-js"
+			},
+			{
+				"label": "Graphql",
+				"id": "file-creator-graphql"
 			}
 		]
 	},
