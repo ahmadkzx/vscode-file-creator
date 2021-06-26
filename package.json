@@ -1,13 +1,28 @@
 {
 	"name": "file-creator",
 	"displayName": "File Creator",
-	"description": "",
+	"description": "Easy Create Your Files Using Templates",
+	"publisher": "ahmadkarimzade",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.57.0"
 	},
 	"categories": [
 		"Other"
+	],
+	"keywords": [
+		"file",
+		"template",
+		"create file",
+		"file creator",
+		"file template"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ahmadkzx/vscode-file-creator"
+	},
+	"extensionKind": [
+		"workspace"
 	],
 	"activationEvents": [
 		"onCommand:file-creator.custom",
