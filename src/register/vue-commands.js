@@ -1,32 +1,32 @@
-const vscode = require('vscode')
-const create = require('../helpers/createFile')
-const getTemplate = require('../helpers/getTemplate')
+const commandsRegistrar = require('../helpers/commandsRegistrar')
 
 const registerVueCommands = (context) => {
-	const componentCommand = vscode.commands.registerCommand('file-creator.vue.component', (uri) => {
-		const template = getTemplate(/*name*/ 'vue-component')
-		create(/*target path*/ uri.fsPath, /*format*/ 'vue', /*content*/ template)
-	})
+	const commands = [
+		{
+			format: 'vue',
+			templateName: 'vue-component',
+			command: 'file-creator.vue.component'
+		},
+		{
+			format: 'vue',
+			templateName: 'vue-store',
+			command: 'file-creator.vue.store'
+		},
+		{
+			format: 'vue',
+			templateName: 'vue-router',
+			command: 'file-creator.vue.router'
+		},
+		{
+			format: 'vue',
+			templateName: 'vue-plugin',
+			command: 'file-creator.vue.plugin'
+		}
+	]
 
-	const storeCommand = vscode.commands.registerCommand('file-creator.vue.store', (uri) => {
-		const template = getTemplate(/*name*/ 'vue-store')
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
-	})
+	const commandsHandler = commandsRegistrar(commands)
 
-	const routerCommand = vscode.commands.registerCommand('file-creator.vue.router', (uri) => {
-		const template = getTemplate(/*name*/ 'vue-router')
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
-	})
-
-	const pluginCommand = vscode.commands.registerCommand('file-creator.vue.plugin', (uri) => {
-		const template = getTemplate(/*name*/ 'vue-plugin')
-		create(/*target path*/ uri.fsPath, /*format*/ 'js', /*content*/ template)
-	})
-
-	context.subscriptions.push(componentCommand)
-	context.subscriptions.push(storeCommand)
-	context.subscriptions.push(routerCommand)
-	context.subscriptions.push(pluginCommand)
+	context.subscriptions.push(...commandsHandler)
 }
 
 module.exports = registerVueCommands
