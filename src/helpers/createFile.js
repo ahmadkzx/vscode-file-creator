@@ -16,6 +16,11 @@ const createFile = async (targetPath, format, content) => {
 	const filePath = path.join(targetPath, `./${fileName}.${format}`)
 
 	content = content.replaceAll('%filename', fileName)
+
+	let targetFolderName = targetPath.split('\\')
+	targetFolderName = targetFolderName[targetFolderName.length - 1]
+	content = content.replaceAll('%foldername', targetFolderName)
+	
 	fs.writeFileSync(filePath, content, 'utf8')
 
 	open(filePath)
