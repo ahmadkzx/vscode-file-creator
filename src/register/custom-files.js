@@ -17,7 +17,6 @@ const registerCustomFiles = (context) => {
 	const diff = userTemplateFiles.filter(file => !ourTemplateFiles.includes(file))
 
 	const customFilesCommand = vscode.commands.registerCommand('file-creator.custom', async (uri) => {
-		
 		const selectedCustomFile = await vscode.window.showQuickPick(diff, { title: 'Custom Templates' })
 		const template = getTemplate(/*name*/ selectedCustomFile)
 		const fileFormat = selectedCustomFile.split('-')[0]
