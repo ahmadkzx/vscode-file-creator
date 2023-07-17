@@ -24,6 +24,9 @@ const isValidTemplateJson = (json) => {
     return true;
 };
 
+/**
+ * read Template Json
+ */
 const readTemplateJson = () => {
 
 	const templatePath = path.join(userTemplatesFolder, 'template.json');

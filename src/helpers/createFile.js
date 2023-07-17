@@ -2,6 +2,7 @@ const fs = require('fs')
 const path = require('path')
 const vscode = require('vscode')
 const open = require('../helpers/openFile')
+const replaceVarForContent = require('../helpers/replaceVarForContent')
 
 /**
  * create file using fs
@@ -15,13 +16,9 @@ const createFile = async (targetPath, format, content) => {
 	
 	const filePath = path.join(targetPath, `./${fileName}.${format}`)
 
-	content = content.replaceAll('%filename', fileName)
-
-	let targetFolderName = targetPath.split('\\')
-	targetFolderName = targetFolderName[targetFolderName.length - 1]
-	content = content.replaceAll('%foldername', targetFolderName)
+	const finalContent = replaceVarForContent(content, fileName, targetPath)
 	
-	fs.writeFileSync(filePath, content, 'utf8')
+	fs.writeFileSync(filePath, finalContent, 'utf8')
 
 	open(filePath)
 }

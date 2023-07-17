@@ -3,6 +3,7 @@ const path = require('path')
 const vscode = require('vscode')
 const getTemplate = require('../helpers/getTemplate')
 const { readTemplateJson } = require('../helpers/readTemplateJson')
+const replaceVarForContent = require('../helpers/replaceVarForContent')
 
 const getCombineFiles = (category, templateMap) => {
 	const item = templateMap[category];
@@ -28,8 +29,7 @@ const createCombineFile = async (allCategory, templateMap, targetPath) => {
 		let content = getTemplate(fileName);
 		const filePath = path.join(targetPath, `./${newFileName}.${format}`)
 
-		content = content.replaceAll('%filename', newFileName);
-		content = content.replaceAll('%foldername', path.basename(targetPath));
+		content =replaceVarForContent(content, newFileName, targetPath)
 
 		fs.writeFileSync(filePath, content, 'utf8');
 		vscode.workspace.openTextDocument(filePath).then(vscode.window.showTextDocument);
