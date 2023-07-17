@@ -53,5 +53,40 @@ Graphql:
 
 🚧 NOTICE: you can use target folder name with %foldername and file name with %filename keywords  
 
+## ✅ Combine Custom Template
+
+1. Follow the steps above to create a custom template file
+
+2. Create template.json in the templates folder
+
+3. We configure the combine item in JSON, the combine item is an object, we take the js property for example, js is the name of the combine, displayed in the tree selection box after selecting combine, name is the final output name of the file, file is the corresponding template file
+
+
+``````json
+{
+    "combine": {
+      "js": [
+        {
+          "name": "test01",
+          "file": "js-test01.template" 
+        },
+        {
+          "name": "test02",
+          "file": "js-test02.template"
+        }
+      ],
+      "less": [{
+          "name": "index.module.less",
+          "file": "module.less-index.template"
+      }]
+    }
+  }
+  
+``````
+File location：
+![](https://static.fuxi.netease.com/yaotai/portal/index/lk6nmrrk_583375.png)
+![](https://static.fuxi.netease.com/yaotai/portal/index/lk6o2ft5_314377.png)
+  
+
 ## Contribution
 help us to improve extension and add other templates
