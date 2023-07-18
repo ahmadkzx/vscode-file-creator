@@ -23,7 +23,7 @@ const createCombineFile = async (allCategory, templateMap, targetPath) => {
 
 	selectedCombineArr.forEach(async (selectedCombineFile) => {
 		const format = selectedCombineFile.file.split('-')[0];
-		const fileName = selectedCombineFile.file.split('.')[0];
+		const fileName = selectedCombineFile.file.replace(".template", "");
 		const newFileName = selectedCombineFile.name.split('.')[0];
 
 		let content = getTemplate(fileName);
