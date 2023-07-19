@@ -13,15 +13,21 @@ const createMultiFile = async (selectedCustomFiles, targetPath) => {
 	const fileName = await vscode.window.showInputBox({ title: 'File Name' })
 	if (!fileName) return
 	selectedCustomFiles.forEach(async (selectedCustomFile) => {
-		
+
 		let content = getTemplate(/*name*/ selectedCustomFile);
 		const format = selectedCustomFile.split('-')[0];
 
-		const filePath = path.join(targetPath, `./${fileName}.${format}`)
+		let index = 0;
+		let newFileName = fileName;
+		let filePath = path.join(targetPath, `./${fileName}.${format}`)
 
-		
+		while (fs.existsSync(filePath)) {
+			index++;
+			newFileName = `${fileName}(${index})`;
+			filePath = path.join(targetPath, `./${newFileName}.${format}`);
+		}
 
-		fs.writeFileSync(filePath, replaceVarForContent(content,fileName,targetPath), 'utf8')
+		fs.writeFileSync(filePath, replaceVarForContent(content, newFileName, targetPath), "utf8");
 
 		open(filePath)
 
